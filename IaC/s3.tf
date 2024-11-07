@@ -7,6 +7,22 @@ resource "aws_s3_bucket" "website-bucket" {
   }
 }
 
+#Bucket Ownership Resource
+resource "aws_s3_bucket_ownership_controls" "website-bucket-ownership-control" {
+  bucket = aws_s3_bucket.website-bucket.id
+  rule {
+    object_ownership = "BucketOwnerPreferred"
+  }
+}
+
+#Bucket ACL
+resource "aws_s3_bucket_acl" "website-bucket-acl" {
+  depends_on = [aws_s3_bucket_ownership_controls.website-bucket-ownership-control]
+
+  bucket = aws_s3_bucket.website-bucket.id
+  acl    = "private"
+}
+
 #The Oac Policy Document
 data "aws_iam_policy_document" "website-bucket-policy-document" {
   statement {
