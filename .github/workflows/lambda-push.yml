@@ -22,4 +22,4 @@ jobs:
     - name: Deploy to Lambda
       run: |
         zip IaC/lambda/lambda_function_payload.zip IaC/lambda/lambda_function.py
-        aws lambda update-function-code --function-name counter-handler --zip-file fileb:///IaC/lambda/lambda_function_payload.zip
+        aws lambda update-function-code --function-name counter-handler --zip-file fileb://IaC/lambda/lambda_function_payload.zip
