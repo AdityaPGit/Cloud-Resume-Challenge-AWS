@@ -26,7 +26,7 @@ resource "aws_apigatewayv2_integration" "counter-api-integration" {
   integration_type = "AWS_PROXY"
   description               = "Integration to hit the lambda function, increment in the dynamodb table, and fetch the incremented item back"
   integration_method        = "POST"
-  integration_uri           = aws_lambda_function.counter-lambda-function.invoke_arn
+  integration_uri           = "${aws_lambda_function.counter-lambda-function.invoke_arn}"
   passthrough_behavior      = "WHEN_NO_MATCH"
 }
 
