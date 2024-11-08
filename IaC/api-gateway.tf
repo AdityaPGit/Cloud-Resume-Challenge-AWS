@@ -3,8 +3,8 @@ resource "aws_apigatewayv2_api" "counter-api" {
   description = "API Gateway endpoint for the live cloud resumme challenge counter"
   protocol_type = "HTTP"
   cors_configuration {
-    allow_origins = ["*"]
-    allow_credentials = false
+    allow_origins = ["https://${aws_cloudfront_distribution.website-distribution.domain_name}"]
+    allow_credentials = true
     allow_headers = ["*"]
     allow_methods = ["*"]
     expose_headers = ["*"]
