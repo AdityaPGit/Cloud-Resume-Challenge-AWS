@@ -1,7 +1,7 @@
 #S3 bucket
 resource "aws_s3_bucket" "website-bucket" {
   bucket = var.bucket_name
-
+  
   tags = {
     Name = "Cloud Resume Challenge"
   }
